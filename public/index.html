@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Context Scene Effect</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="styles/materialize.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAqzx8MJhV5-Fb5Uej7YRF9HnJuk6e0jco",
+      authDomain: "context-scene-effect.firebaseapp.com",
+      databaseURL: "https://context-scene-effect.firebaseio.com",
+      projectId: "context-scene-effect",
+      storageBucket: "context-scene-effect.appspot.com",
+      messagingSenderId: "858128455118"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+
+
+
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Template PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <!-- Windows -->
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+
+  <link rel="icon" type="image/png"
+    href="https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/icon.png?alt=media&token=212c5c9d-04fe-494c-8a07-a63d960368d5">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper blue darken-4">
+      <h1 class=" center">Context Scene Effect</h1>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+
+            <div id="index">
+              <span class="card-title" style='font-size: 25px'>
+                This test is part of an assignment in course Cognitive Science (WID2003).
+              </span><br>
+              <p> The content of this test is regarding the topic "Context Scene Effect".A context effect is an aspect
+                of cognitive psychology that describes the influence of environmental factors on one's perception of a
+                stimulus. Context effects employ top-down design when analyzing information. Top down design fuels
+                understanding of an image by using prior experiences and knowledge to interpret a stimulus. This process
+                helps us analyze familiar scenes and objects when encountering them.<br><br>To start this test, please
+                select your gender and preferred level of difficulty.</p><br>
+              <form action='#'>
+                <div>
+                  <label style='color:white'>Gender</label>
+                  <div style='margin-bottom:8%'>
+                    <select id='gender'>
+                      <option value='nil' disabled selected>Choose your gender</option>
+                      <option value="F">Female</option>
+                      <option value="M">Male</option>
+                    </select>
+                  </div>
+                </div>
+                <p style='text-align: center'>Level of difficulty</p>
+                <div class='difficulty'>
+                  <label>
+                    <button id="easy" class="waves-effect waves-light btn-large " type="button"
+                      value='easy'>Easy</button>
+                  </label>
+                  <label>
+                    <button class="waves-effect waves-light btn-large " type="button" id='hard'
+                      value='hard'>hard</button>
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <div id="easyd" class='hidden'>
+              <span class="card-title">
+                <b>Easy</b>
+              </span><br>
+              <p>You have chosen level of difficulty: Easy.<br> This test consists of 4 questions. You will be shown a
+                scene and then some pictures. Please select the most appropriate option according to the scene. Good
+                luck!</p><br>
+              <form id='info'>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id='m1p1b'>Next</button>
+                </label>
+              </form>
+            </div>
+
+            <div id='m1p1' class="hidden">
+              <span class="card-title" style='font-size: 25px'>Easy</span>
+              <p>Question 1</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/kitchen.jpg?alt=media&token=70c08f00-f657-4630-b0ca-6b1522114b25'
+                alt='kitchen scene'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id='y1'>Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m1q1" class='hidden'>
+              <span class="card-title">Easy</span>
+              <p>Question 1<br>Please select the most appropriate option for the scene shown before</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q1" type="radio" value='book' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/book.png?alt=media&token=1d70886a-737c-4787-9aae-1e285af71fcb'
+                          alt='book'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q1" type="radio" value='chopboard' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/chopboard.jpg?alt=media&token=8514f4a6-eb0d-4aa9-9805-d7c0ae0f2577'
+                          alt='chopboard'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q1" type="radio" value='doorplate' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/doorplate.jpg?alt=media&token=90a925e5-aecf-4591-abbc-aded30124ff9'
+                          alt='doorplate'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q1" type="radio" value='paper' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/paper.jpg?alt=media&token=a35c3be9-8c1f-4738-ab59-ff732a1cc557'
+                          alt='paper'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id=m1p2b>Next</button>
+            </div>
+
+            <div id="m1p2" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Easy</span>
+              <p>Question 2</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/volleyball%20centre.jpg?alt=media&token=92909581-3d22-4d04-8cbe-d3a3661f9b9c'
+                alt='volleyballcentre'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y2">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m1q2" class="hidden">
+              <span class="card-title">Easy</span>
+              <p>Question 2 <br>Please select the most appropriate option for the scene shown before</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q2" type="radio" value='baseball' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/baseball.png?alt=media&token=fc525c62-461c-492c-9e2a-0691e2bbd1c2'
+                          alt='baseball'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q2" type="radio" value='basketball' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/basketball.png?alt=media&token=56b316bc-5842-44c0-a7a1-175963b9ff5b'
+                          alt='basketball'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q2" type="radio" value='football' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/football.jpg?alt=media&token=34acb853-448e-4da5-8591-cfd6311ddb99'
+                          alt='football'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q2" type="radio" value='volleyball' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/volleyball.jpg?alt=media&token=9661fae2-0608-4800-a456-3ba8e5ee9a39'
+                          alt='volleyball'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id=m1p3b>Next</button>
+            </div>
+
+            <div id="m1p3" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Easy</span>
+              <p>Question 3</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/comp%20table.jpg?alt=media&token=76fd9801-cf4b-4e13-835c-96a807901c3c'
+                alt='computertable'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y3">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m1q3" class="hidden">
+              <span class="card-title">Easy</span>
+              <p>Question 3</p>
+              <p>Please select the most appropriate option for the scene shown before</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q3" type="radio" value='mouse' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/mouse.jpg?alt=media&token=54409ece-395b-4a9a-8735-e04e362081e9'
+                          alt='mouse'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q3" type="radio" value='speaker' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/speaker.jpg?alt=media&token=c2d302d5-78a6-481f-99b4-641b809a0739'
+                          alt='speaker'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q3" type="radio" value='juice' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/juice.jpg?alt=media&token=58a90aa4-b735-45b8-8346-318d9ff276f2'
+                          alt='juice'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q3" type="radio" value='keyboard' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/keyboard.jpg?alt=media&token=832a26c5-f6cd-4147-b620-2f97e4d8df56'
+                          alt='keyboard'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id="m1p4b">Next</button>
+            </div>
+
+            <div id="m1p4" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Easy</span>
+              <p>Question 4</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/bathroom.jpg?alt=media&token=9366fa40-7fea-472b-b994-c2c4436c65fb'
+                alt='bathroom'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y4">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m1q4" class="hidden">
+              <span class="card-title">Easy</span>
+              <p>Question 4</p>
+              <p>Please select the most appropriate option for the scene shown before.</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q4" type="radio" value='cat' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/cat.webp?alt=media&token=0005fa06-ae38-492b-94d8-9dea008c5c5b'
+                          alt='cat'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q4" type="radio" value='scissors' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/scissors.jpg?alt=media&token=87fce700-e1ca-4309-947e-770c51a069d3'
+                          alt='scissors'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q4" type="radio" value='shampoo' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/shampoo.jpg?alt=media&token=28ffd4b6-1d8b-4ab7-9f0c-7afb28092c56'
+                          alt='shampoo'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m1q4" type="radio" value='powerbank' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/powerbank.jpg?alt=media&token=25b8f114-89f1-4de4-aacb-2da9905ea135'
+                          alt='powerbank'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id="submitb1">Submit</button>
+            </div>
+
+            <div id="hardd" class="hidden">
+              <span class="card-title">
+                <b>Hard</b>
+              </span><br>
+              <p>You have chosen level of difficulty: Hard.<br> This test consists of 4 questions. You will be shown an
+                object and then some brands. Please select the most appropriate option according to the object. Good
+                luck!</p><br>
+              <form id='info'>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id='m2p1b'>Next</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m2p1" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Hard</span>
+              <p>Question 1</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/lipstick.jpg?alt=media&token=b6fd6ae3-b49c-44b8-bec4-58bd2bcf590a'
+                alt='lipstick'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y5">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m2q1" class="hidden">
+              <span class="card-title">Hard</span>
+              <p>Question 1<br>Please select the most appropriate brand for the object before.</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q1" type="radio" value='ysl' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/ysl.jpg?alt=media&token=68f4d6ea-5d91-40e4-84ca-5b3ddff7810a'
+                          alt='ysl'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q1" type="radio" value='cupra' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/cupra.jpg?alt=media&token=0423329c-41bc-4c70-ace3-356f67bbb653'
+                          alt='cupra'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q1" type="radio" value='christy' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/christy.png?alt=media&token=34a133af-8edf-4a11-8a97-4edf51b6eefa'
+                          alt='christy'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q1" type="radio" value='jennair' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/jennair.jpg?alt=media&token=8d1d5b6b-e231-41d7-8d45-6d74e5ff831c'
+                          alt='jennair'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id="m2p2b">Next</button>
+            </div>
+
+            <div id="m2p2" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Hard</span>
+              <p>Question 2</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/fifa.jpg?alt=media&token=6ac03db2-93e9-4754-b661-649e858a60d0'
+                alt='fifa'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y6">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m2q2" class="hidden">
+              <span class="card-title">Hard</span>
+              <p>Question 2<br>Please select the most appropriate player for the sports before.</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q2" type="radio" value='david beckham' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/david%20beckham.JPG?alt=media&token=d5e7645d-83cd-4487-82e8-7789027f1033'
+                          alt='david beckham'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q2" type="radio" value='kobebryant' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/kobe%20bryant.jpg?alt=media&token=e98dcdce-dbe2-4807-9b0e-41580d13f9b8'
+                          alt='kobebryant'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q2" type="radio" value='stephen curry' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/stephen%20curry.jpg?alt=media&token=c302d30c-285d-4508-a295-d1e671a3ef84'
+                          alt='stephen curry'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q2" type="radio" value='lindan' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/lin%20dan.jpg?alt=media&token=9cb9a028-4e4b-4d97-8885-29397256d615'
+                          alt='lindan'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id="m2p3b">Next</button>
+            </div>
+
+            <div id="m2p3" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Hard</span>
+              <p>Question 3</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/car.png?alt=media&token=ecad1f9e-e7fe-4f37-96cf-33ba9105899b'
+                alt='car'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y7">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m2q3" class="hidden">
+              <span class="card-title">Hard</span>
+              <p>Question 3<br>Please select the most appropriate logo for the object before..</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q3" type="radio" value='boeing' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/boeing.jpg?alt=media&token=0b13cc4b-42bc-4f24-aa9e-4777febf46bb'
+                          alt='boeing'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q3" type="radio" value='dragon' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/dragon.jpg?alt=media&token=9047a72a-eec0-4fc8-9305-3ca71d142e96'
+                          alt='dragon'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q3" type="radio" value='delta' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/delta.jpg?alt=media&token=05121c07-5756-44ff-8dbb-1309d7747aec'
+                          alt='delta'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q3" type="radio" value='geely' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/geely.jpg?alt=media&token=a176bc2a-56ea-488c-9c4f-a37a8c7a3efa'
+                          alt='geely'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id="m2p4b">Next</button>
+            </div>
+
+            <div id="m2p4" class="hidden">
+              <span class="card-title" style='font-size: 25px'>Hard</span>
+              <p>Question 4</p>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/watch.jpg?alt=media&token=705bdd4d-b0fd-4378-8028-5d0b73cf0f20'
+                alt='watch'>
+              <br>
+              <form action='#'>
+                <p style='text-align: center'>Are you ready for the challenge?</p>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id="y8">Yes!</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="m2q4" class="hidden">
+              <span class="card-title">Hard</span>
+              <p>Question 4<br>Please select the most appropriate logo for the object shown before.</p>
+              <table>
+                <form action="#">
+                  <div class='row' style='padding-top:20px'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q4" type="radio" value='everlane' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/everlane.jpg?alt=media&token=5a7b73c6-8e3d-42c6-919d-a68c89e423fc'
+                          alt='everlane'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q4" type="radio" value='chanel' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/chanel.jpg?alt=media&token=9ce4f3d4-1652-4cad-82ff-28dfa51ed23a'
+                          alt='chanel'>
+                      </label>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q4" type="radio" value='lv' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/lv.png?alt=media&token=c74efc68-a7fd-4e4e-88cc-6bb9c9d9f10a'
+                          alt='lv'>
+                      </label>
+                    </div>
+                    <div class='col s6'>
+                      <label>
+                        <input name="m2q4" type="radio" value='nike' />
+                        <img
+                          src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/nike.png?alt=media&token=71368ffc-59a7-43d2-9ac8-3aee17785aa7'
+                          alt='nike'>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </table>
+              <button class="waves-effect waves-light btn-large" id="submitb2">Submit</button>
+            </div>
+
+            <div id="submit" class="hidden">
+              <span class="card-title">Thank You!</span>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/thankyou.jpg?alt=media&token=8ef92705-4fcb-422e-9c4d-7678034fb83c'
+                alt='thank you'>
+              <p>Congratulations! You have completed the test!<br>Would you like to try again?</p>
+              <form action="#">
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id='again'>Yes</button>
+                </label>
+                <label>
+                  <button class="waves-effect waves-light btn-large" type='button' id='noagain'>No</button>
+                </label>
+              </form>
+            </div>
+
+            <div id="last" class="hidden">
+              <span class="card-title">Goodbye!</span>
+              <img
+                src='https://firebasestorage.googleapis.com/v0/b/context-scene-effect.appspot.com/o/nice%20day.jpg?alt=media&token=82d0b437-d530-4e4c-b440-7f3cdd93c7b1'
+                alt='nice day'>
+              <p>Thank you again! Goodbye and have a nice day!</p>
+              <button class="waves-effect waves-light btn-large" type='button' id="home">Home</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type='text/javascript' src="scripts/app.js"></script>
+</body>
+
+</html>
